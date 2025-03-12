@@ -48,10 +48,10 @@ export const createTournamentSchema = z.object({
   "college",
   "university",
   "other"]),
-  startDate: z.date(),
-  endDate: z.date(),
+  startDate: z.string().datetime(),
+  endDate: z.string().datetime(),
   reportingTime: z.string(),
-  registrationDeadline: z.date(),
+  registrationDeadline: z.string().datetime(),
   registrationDeadlineTime: z.string(),
   // Make these required instead of optional with refine
   chiefArbiterName: z.string().min(1, { message: "Chief arbiter name is required" }),

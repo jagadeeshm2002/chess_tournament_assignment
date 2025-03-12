@@ -7,6 +7,7 @@ import { connectDb } from "./model/db";
 import { config } from "./config";
 dotenv.config();
 const app = Express();
+app.use(Express.json())
 app.use(cors());
 connectDb();
 

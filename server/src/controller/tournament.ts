@@ -37,7 +37,8 @@ const handleError = (res: Response, error: unknown) => {
 
 export const getTournament = async (req: Request, res: Response) => {
   try {
-    const result = tournamentIdSchema.safeParse(req.params);
+    const id = Number(req.params.id);
+    const result = tournamentIdSchema.safeParse({id});
     if (!result.success) {
       sendResponse(res, 400, {
         success: false,
@@ -68,7 +69,9 @@ export const getTournament = async (req: Request, res: Response) => {
 
 export const deleteTournament = async (req: Request, res: Response) => {
   try {
-    const result = tournamentIdSchema.safeParse(req.params);
+    const id = Number(req.params.id);
+    const result = tournamentIdSchema.safeParse({id});
+    console.log(result.error)
     if (!result.success) {
       sendResponse(res, 400, {
         success: false,
@@ -102,8 +105,13 @@ export const deleteTournament = async (req: Request, res: Response) => {
 
 export const updateTournament = async (req: Request, res: Response) => {
   try {
-    const idResult = tournamentIdSchema.safeParse(req.params);
+    const id = Number(req.params.id);
+    const idResult = tournamentIdSchema.safeParse({id});
+
+ 
     const bodyResult = updateTournamentSchema.safeParse(req.body);
+
+    console.log(bodyResult.error)
 
     if (!idResult.success || !bodyResult.success) {
       sendResponse(res, 400, {
@@ -124,7 +132,7 @@ export const updateTournament = async (req: Request, res: Response) => {
     if (updatedCount === 0) {
       sendResponse(res, 404, {
         success: false,
-        error: "Tournament not found",
+        error: "Tournament not updated",
       });
       return;
     }
