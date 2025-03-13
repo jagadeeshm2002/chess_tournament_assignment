@@ -1,0 +1,56 @@
+import z from "zod";
+
+// Define types for embedded data
+
+export const createTournamentSchema = z.object({
+    title: z.string().min(1, { message: "Title is required" }),
+    fideRated: z.boolean(),
+    organizerName: z.string().min(1, { message: "Organizer name is required" }),
+    tournamentLevel: z.enum(["international", "national", "state", "district", "club", "school", "college", "university", "other"]),
+    startDate: z.coerce.date(),
+    endDate: z.coerce.date(),
+    reportingTime: z.string(),
+    registrationDeadline: z.coerce.date(),
+    registrationDeadlineTime: z.string(),
+    chiefArbiterName: z.string().min(1, { message: "Chief arbiter name is required" }),
+    tournamentDirectorName: z.string().min(1, { message: "Tournament director name is required" }),
+    registrationFeesCurrency: z.string(),
+    registrationFeesAmount: z.number().optional(),
+    numberOfRounds: z.number().optional(),
+    timeControlType: z.string().optional(),
+    timeControlDuration: z.string().optional(),
+    timeControlIncrement: z.string().optional(),
+    tournamentType: z.enum(["rapid", "blitz", "classical", "swiss", "roundrobin"]).optional(),
+    nationalApproval: z.boolean(),
+    stateApproval: z.boolean(),
+    districtApproval: z.boolean(),
+    contactPersonName: z.string().min(1, { message: "Contact person name is required" }),
+    emailId: z.string().email().optional(),
+    contactNumber: z.string().optional(),
+    alternateContact: z.string().optional(),
+    numberOfTrophiesMale: z.number(),
+    numberOfTrophiesFemale: z.number(),
+    totalCashPrize: z.number(),
+    country: z.string().optional(),
+    state: z.string().optional(),
+    district: z.string().optional(),
+    city: z.string().optional(),
+    pincode: z.string().optional(),
+    venueAddress: z.string().optional(),
+    nearestLandmark: z.string().optional(),
+    brochureUrl: z.string().optional(),
+    locationLatitude: z.number().optional(),
+    locationLongitude: z.number().optional(),
+    chessboardProvided: z.boolean(),
+    timerProvided: z.boolean(),
+    parkingFacility: z.number().max(3),
+    hasFoodFacility: z.boolean(),
+    ageCategories: z.array(z.object({
+      gender: z.enum(["male", "female"]),
+      category: z.string().min(1)
+    })).optional(),
+    foodOptions: z.array(z.object({
+      type: z.enum(["breakfast", "lunch", "dinner", "snacks", "beverages"]),
+      available: z.boolean()
+    })).optional(),
+  });

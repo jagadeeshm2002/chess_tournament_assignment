@@ -106,8 +106,8 @@ export type Tournament = z.infer<typeof tournamentSchema>;
 export const updateTournamentSchema = createTournamentSchema.partial();
 
 export const getTournamentsSchema = z.object({
-  page: z.number().default(1),
-  limit: z.number().default(10),
+  page: z.coerce.number().default(1),
+  limit: z.coerce.number().default(10),
   title: z.string().min(1, { message: "Title is required" }).optional(),
   city: z.string().min(1, { message: "City is required" }).optional(),
 });

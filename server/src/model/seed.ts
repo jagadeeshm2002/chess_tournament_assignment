@@ -6,7 +6,7 @@ import {
 // Sample tournament data for testing
 export const tournamentSeedData: CreateTournamentInput[] = [
   {
-    title: "Chess Masters Championship 2025",
+    title: "Chefss Masfters Champfdsdfsdfhip 2025",
     fideRated: true,
     organizerName: "International Chess Federation",
     tournamentLevel: "international",
@@ -63,7 +63,7 @@ export const tournamentSeedData: CreateTournamentInput[] = [
     ],
   },
   {
-    title: "State Chess Championship",
+    title: "Stafte sdfsfdasdfmpionship",
     fideRated: false,
     organizerName: "State Chess Association",
     tournamentLevel: "state",
@@ -116,7 +116,7 @@ export const tournamentSeedData: CreateTournamentInput[] = [
     ],
   },
   {
-    title: "University Chess Tournament",
+    title: "Universfifty sdffss Tournament",
     fideRated: false,
     organizerName: "University Chess Club",
     tournamentLevel: "university",

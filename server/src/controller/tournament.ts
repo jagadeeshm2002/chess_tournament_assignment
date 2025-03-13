@@ -179,6 +179,7 @@ export const createTournament = async (req: Request, res: Response) => {
 
 export const getAllTournament = async (req: Request, res: Response) => {
   try {
+    
     const result = getTournamentsSchema.safeParse(req.query);
     if (!result.success) {
       sendResponse(res, 400, {
